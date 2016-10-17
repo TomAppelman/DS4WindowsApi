@@ -1,0 +1,16 @@
+LIBRARY	"DualShock4.dll"
+
+EXPORTS
+		DllMain @1
+		DualShock4GetVersion @2
+		DualShock4GetState @3
+		DualShock4GetBatteryInfo @4
+		DualShock4GetDefaultLight @5
+		DualShock4SetVibration @6
+		DualShock4SetLight @7
+		DualShock4SetLightBlink @8
+		Dualshock4DisconnectOnEmptyBattery @9
+		
+		
+
+
