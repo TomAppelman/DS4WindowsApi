@@ -3,6 +3,7 @@ Unofficial Dualshock 4 api for windows
 (inspired by the xinput api made by microsoft)
 
 Working features:
+- Fully working Dualshock 4 intergration without external software;
 - Compatible with Windows 10 and works even with the anniversary update;
 - Be able to connection Wireles by the use of a bluetooth connection;
 - Be able top changing the led light color;
