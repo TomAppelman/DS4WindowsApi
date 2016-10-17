@@ -3,7 +3,7 @@ Unofficial Dualshock 4 api for windows
 (inspired by the xinput api made by microsoft)
 
 Working features:
-- Wireless connection through bluetooth connection;
+- Be able to connection Wireles by the use of a bluetooth connection;
 - Be able top changing the led light color;
 - Having a special color per controller index;
 - Touchpad positions for 2 points;
