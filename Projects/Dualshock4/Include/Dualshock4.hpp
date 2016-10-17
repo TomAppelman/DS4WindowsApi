@@ -1,9 +1,3 @@
-/*
-	C++ style code for better organisation of code;
-
-	TODO:
-	add inline macro
-*/
 #pragma once
 
 #include "Dualshock4.h"
