@@ -17,6 +17,7 @@
 
 // Device ids
 #define DUALSHOCK4_DEVICE_PRODUCT_ID 1476
+#define DUALSHOCK4V2_DEVICE_PRODUCT_ID 2508
 #define DUALSHOCK4_DEVICE_VENDOR_ID 1356 
 
 // Device flags
@@ -74,7 +75,7 @@ typedef struct _RAWINPUT_STATE
 	HANDLE DeviceHandle[DUALSHOCK4_MAX_USERS];
 	HANDLE HIDHandle[DUALSHOCK4_MAX_USERS];
 	DUALSHOCK4_DEVICE_INFO DeviceInfo[DUALSHOCK4_MAX_USERS];// might change this to DeviceData, makes more sense
-
+	uint32_t ReportID[DUALSHOCK4_MAX_USERS];
 }RAWINPUT_STATE;
 
 

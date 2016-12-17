@@ -62,7 +62,8 @@ DWORD WINAPI XInputSetState(DWORD dwUserIndex, XINPUT_VIBRATION* pVibration) {
 	if (pVibration == 0) {
 		return ERROR_SUCCESS;
 	}
-	DUALSHOCK4_VIBRATION vib = { (pVibration->wLeftMotorSpeed / 65535) * 255, (pVibration->wRightMotorSpeed / 65535) * 255 };
+	float max_value = 65535.f;
+	DUALSHOCK4_VIBRATION vib = { (pVibration->wLeftMotorSpeed / max_value) * 255.f, (pVibration->wRightMotorSpeed / max_value) * 255.f };
 	if (DualShock4SetVibration(dwUserIndex, &vib) == DUALSHOCK4_ERROR_DISCONNECTED) {
 		return ERROR_DEVICE_NOT_CONNECTED;
 	}

@@ -11,5 +11,5 @@ Working features:
 - Having a special color per controller index;
 - Touchpad positions for 2 points;
 - Vibration functionality;
-- Extra: a Xinput wrapper;
-
+- Support for both the Dualshock 4 models(CUH-ZTC1 & CUH-ZTC2);
+- Includes source for a xinput api wrapper(not fully functional in all games);

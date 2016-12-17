@@ -44,7 +44,8 @@ int DualShock4OnDeviceAdded(HANDLE hDevice)
 
 	// this part belongs to the dualshock internaly stuff
 	if (device_info.hid.dwVendorId == DUALSHOCK4_DEVICE_VENDOR_ID &&
-		device_info.hid.dwProductId == DUALSHOCK4_DEVICE_PRODUCT_ID)
+		(	device_info.hid.dwProductId == DUALSHOCK4_DEVICE_PRODUCT_ID ||
+			device_info.hid.dwProductId == DUALSHOCK4V2_DEVICE_PRODUCT_ID))
 	{
 		//int controller_index = -1;/
 		BOOL device_found = FALSE;
@@ -96,6 +97,7 @@ int DualShock4OnDeviceAdded(HANDLE hDevice)
 		}
 		DualShock4SetLight(device_index, &sDualShockDefaultLightData[device_index]);
 		DualShock4SetLightBlink(device_index, 0);
+		sRawInputState.ReportID[device_index] = 0;
 		return TRUE;
 	}
 
@@ -169,7 +171,9 @@ int Dualshock4OnDeviceInput(HRAWINPUT* RawDataInputPtr)
 
 
 		// get package id
-		device_state_ptr->PackageId = (DWORD)RawDataPtr[offset + 7];
+		sRawInputState.ReportID[device_index]++;
+		sRawInputState.ReportID[device_index] = sRawInputState.ReportID[device_index] % _UI32_MAX;
+		device_state_ptr->PackageId = sRawInputState.ReportID[device_index];// (DWORD)RawDataPtr[offset + 7];
 
 		// get dpad data
 		device_state_ptr->Gamepad.Pad = (WORD)RawDataPtr[offset + 5] % 16;//? why %16
@@ -277,6 +281,7 @@ int Dualshock4InputRegister(HWND hwnd) {
 	if (!RegisterRawInputDevices(Rid, 1, sizeof(RAWINPUTDEVICE))) {
 		return FALSE;
 	}
+
 	sRawInputState.Initialized = TRUE;
 	sRawInputState.DiconnectOnEmptyBattery = FALSE;
 	return TRUE;
